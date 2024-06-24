@@ -2,9 +2,9 @@
  <div class="hero_area">
      <header class="header_section">
          <nav class="navbar navbar-expand-lg custom_nav-container ">
-             <a class="navbar-brand" href="index.html">
+             <a class="navbar-brand" href="">
                  <span>
-                     Giftos
+                     Online Shop
                  </span>
              </a>
              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -37,28 +37,41 @@
                      </li>
                  </ul>
                  <div class="user_option">
-                     <a href="{{ url('/login') }}">
-                         <i class="fa fa-user" aria-hidden="true"></i>
-                         <span>
-                             Login
-                         </span>
-                     </a>
+                     @if (Route::has('login'))
+                         @auth
+                             <a href="">
+                                 <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                             </a>
 
-                     <a href="{{ url('/register') }}">
-                         <i class="fa fa-vcard" aria-hidden="true"></i>
-                         <span>
-                             Resigster
-                         </span>
-                     </a>
+                             <form class="form-inline ">
+                                 <button class="btn nav_search-btn" type="submit">
+                                     <i class="fa fa-search" aria-hidden="true"></i>
+                                 </button>
+                             </form>
+                             <form style="padding: 15px" method="POST" action="{{ route('logout') }}">
+                                 @csrf
+                                 <input class="btn btn-success" type="submit" value="logout">
+                                 {{-- <span>
+                                     Logout
+                                 </span> --}}
+                             </form>
+                         @else
+                             <a href="{{ url('/login') }}">
+                                 <i class="fa fa-user" aria-hidden="true"></i>
+                                 <span>
+                                     Login
+                                 </span>
+                             </a>
 
-                     <a href="">
-                         <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                     </a>
-                     <form class="form-inline ">
-                         <button class="btn nav_search-btn" type="submit">
-                             <i class="fa fa-search" aria-hidden="true"></i>
-                         </button>
-                     </form>
+                             <a href="{{ url('/register') }}">
+                                 <i class="fa fa-vcard" aria-hidden="true"></i>
+                                 <span>
+                                     Resigster
+                                 </span>
+                             </a>
+
+                         @endauth
+                     @endif
                  </div>
              </div>
          </nav>
