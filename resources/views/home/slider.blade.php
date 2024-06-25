@@ -9,7 +9,7 @@
                                 <div class="detail-box">
                                     <h1>
                                         Welcome To Our <br>
-                                        Gift Shop
+                                        Online Shop
                                     </h1>
                                     <p>
                                         Sequi perspiciatis nulla reiciendis, rem, tenetur impedit, eveniet non
