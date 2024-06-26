@@ -12,7 +12,11 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     public function index(){
-        return view('admin.index');
+        $user = User::where('usertype','user')->count();
+        $product = Product::all()->count();
+        $order = Order::all()->count();
+        $delivered = Order::where('status','Delivered')->count();
+        return view('admin.index',compact('user','product','order','delivered'));
     }
 
     public function home(){
@@ -117,5 +121,13 @@ class HomeController extends Controller
 
         return redirect()->back();
 
+    }
+
+    public function myorders(){
+
+        $user = Auth::user()->id;
+        $count = cart::where('user_id',$user)->get()->count();
+        $order = Order::where('user_id' , $user)->get();
+        return view('home.order',compact('count','order'));
     }
 }
