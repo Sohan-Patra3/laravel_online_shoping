@@ -8,7 +8,9 @@
                 <div class="statistic-block block">
                     <div class="progress-details d-flex align-items-end justify-content-between">
                         <div class="title">
-                            <div class="icon"><i class="icon-user-1"></i></div><strong>TOTAL CLIENT</strong>
+                            <div class="icon"><i class="icon-user-1"></i></div><strong><a
+                                    href="{{ url('view_client') }}">TOTAL
+                                    CLIENT</a></strong>
                         </div>
                         <div class="number dashtext-1">{{ $user }}</div>
                     </div>
@@ -22,7 +24,9 @@
                 <div class="statistic-block block">
                     <div class="progress-details d-flex align-items-end justify-content-between">
                         <div class="title">
-                            <div class="icon"><i class="icon-contract"></i></div><strong>TOTAL PRODUCTS</strong>
+                            <div class="icon"><i class="icon-contract"></i></div><strong>
+                                <a href="{{ url('view_product') }}">TOTAL PRODUCTS</a>
+                            </strong>
                         </div>
                         <div class="number dashtext-2">{{ $product }}</div>
                     </div>
@@ -36,7 +40,8 @@
                 <div class="statistic-block block">
                     <div class="progress-details d-flex align-items-end justify-content-between">
                         <div class="title">
-                            <div class="icon"><i class="icon-paper-and-pencil"></i></div><strong>TOTAL ORDER</strong>
+                            <div class="icon"><i class="icon-paper-and-pencil"></i></div><strong><a
+                                    href="{{ url('view_order') }}">TOTAL ORDER</a></strong>
                         </div>
                         <div class="number dashtext-3">{{ $order }}</div>
                     </div>
@@ -50,10 +55,10 @@
                 <div class="statistic-block block">
                     <div class="progress-details d-flex align-items-end justify-content-between">
                         <div class="title">
-                            <div class="icon"><i class="icon-writing-whiteboard"></i></div><strong>TOTAL
-                                DELIVERED</strong>
+                            <div class="icon"><i class="icon-writing-whiteboard"></i></div><strong><a
+                                    href="{{ url('view_order') }}">TOTAL DELIVERED</a></strong>
                         </div>
-                        <div class="number dashtext-4">{{ $delivered  }}</div>
+                        <div class="number dashtext-4">{{ $delivered }}</div>
                     </div>
                     <div class="progress progress-template">
                         <div role="progressbar" style="width: 10%" aria-valuenow="35" aria-valuemin="0"

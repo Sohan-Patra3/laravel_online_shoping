@@ -23,8 +23,8 @@
                         ABOUT US
                     </h6>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum dolor sit amet,
-                        consectetur adipiscing elit, sed doLorem ipsum dolor sit amet,
+                        Our dedicated customer service team is here to assist you with any questions or concerns. We
+                        strive to provide the best shopping experience from start to finish.
                     </p>
                 </div>
                 <div class="col-md-6 col-lg-3">
@@ -32,7 +32,7 @@
                         <h5>
                             Newsletter
                         </h5>
-                        <form action="#">
+                        <form action="">
                             <input type="email" placeholder="Enter your email">
                             <button>
                                 Subscribe
@@ -45,8 +45,8 @@
                         NEED HELP
                     </h6>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum dolor sit amet,
-                        consectetur adipiscing elit, sed doLorem ipsum dolor sit amet,
+                        Your satisfaction is our top priority. If you have any questions, concerns, or need assistance
+                        with your order, our dedicated customer support team is here to help.
                     </p>
                 </div>
                 <div class="col-md-6 col-lg-3">
@@ -54,17 +54,17 @@
                         CONTACT US
                     </h6>
                     <div class="info_link-box">
-                        <a href="">
+                        <a href="{{ url('contactus') }}">
                             <i class="fa fa-map-marker" aria-hidden="true"></i>
-                            <span> Gb road 123 london Uk </span>
+                            <span> Chandrasekhapur , Patia , Bhubaneswar </span>
                         </a>
-                        <a href="">
+                        <a href="{{ url('contactus') }}">
                             <i class="fa fa-phone" aria-hidden="true"></i>
-                            <span>+01 12345678901</span>
+                            <span>+91 8954568974</span>
                         </a>
-                        <a href="">
+                        <a href="{{ url('contactus') }}">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
-                            <span> demo@gmail.com</span>
+                            <span> sohanpatra@gmail.com </span>
                         </a>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
         <div class="container">
             <p>
                 &copy; <span id="displayYear"></span> All Rights Reserved By
-                <a href="https://html.design/">Web Tech Knowledge</a>
+                <a>Web Developer</a>
             </p>
         </div>
     </footer>

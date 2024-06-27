@@ -40,11 +40,11 @@ Route::get('delete_product/{id}' , [AdminController::class , 'delete_product'])-
 
 Route::get('product_search' , [AdminController::class , 'product_search'])->middleware(['auth' , 'admin']);
 
-Route::get('update_product/{id}' , [AdminController::class , 'update_product'])->middleware(['auth' , 'admin']);
+Route::get('update_product/{slug}' , [AdminController::class , 'update_product'])->middleware(['auth' , 'admin']);
 
 Route::post('edit_product/{id}' , [AdminController::class , 'edit_product'])->middleware(['auth' , 'admin']);
 
-Route::get('product_details/{id}' , [HomeController::class , 'product_details']);
+Route::get('product_details/{slug}' , [HomeController::class , 'product_details']);
 
 Route::get('add_cart/{id}' , [HomeController::class , 'add_cart'])->middleware(['auth' , 'verified']);
 
@@ -64,3 +64,18 @@ Route::get('delivered/{id}' , [AdminController::class , 'delivered'])->middlewar
 Route::get('print_pdf/{id}' , [AdminController::class , 'print_pdf'])->middleware(['auth' , 'admin']);
 
 Route::get('myorders' , [HomeController::class , 'myorders'])->middleware(['auth' , 'verified']);
+
+Route::controller(HomeController::class)->group(function(){
+    Route::get('stripe/{value}', 'stripe');
+    Route::post('stripe/{value}', 'stripePost')->name('stripe.post');
+});
+
+Route::get('shop' , [HomeController::class , 'shop']);
+
+Route::get('why' , [HomeController::class , 'why']);
+
+Route::get('contactus' , [HomeController::class , 'contactus']);
+
+Route::get('testimonial' , [HomeController::class , 'testimonial']);
+
+Route::get('view_client' , [AdminController::class , 'view_client'])->middleware(['auth' , 'admin']);

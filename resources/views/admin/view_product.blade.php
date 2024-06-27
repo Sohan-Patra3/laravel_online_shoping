@@ -90,7 +90,7 @@
                                         alt="">
                                 </td>
                                 <td class="table_td">
-                                    <a href="{{ url('update_product', $products->id) }}"
+                                    <a href="{{ url('update_product', $products->slug) }}"
                                         class="btn btn-success">Edit</a>
                                 </td>
 

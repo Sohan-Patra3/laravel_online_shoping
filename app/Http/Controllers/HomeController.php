@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\cart;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
+use Session;
+use Stripe;
 
 class HomeController extends Controller
 {
@@ -40,8 +42,8 @@ class HomeController extends Controller
         return view('home.index',compact('product','count'));
     }
 
-    public function product_details($id){
-        $data = Product::find($id);
+    public function product_details($slug){
+        $data = Product::where('slug' , $slug)->get()->first();
         if(Auth::id()){
         $user = Auth::user();
         $user_id = $user->id;
@@ -130,4 +132,107 @@ class HomeController extends Controller
         $order = Order::where('user_id' , $user)->get();
         return view('home.order',compact('count','order'));
     }
+    public function stripe($value)
+    {
+        return view('home.stripe',compact('value'));
+    }
+
+    public function stripePost(Request $request,$value)
+    {
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        Stripe\Charge::create ([
+                "amount" => $value * 100,
+                "currency" => "inr",
+                "source" => $request->stripeToken,
+                "description" => "Test payment from itsolutionstuff.com."
+        ]);
+
+        $name = Auth::user()->name;
+
+        $phone = Auth::user()->phone;
+
+        $rec_address = Auth::user()->address;
+
+        $userid= Auth::user()->id;
+
+        $cart = cart::where('user_id' , $userid)->get();
+
+        foreach($cart as $carts){
+            $order = new Order;
+
+            $order->name=$name;
+
+            $order->rec_address=$rec_address;
+
+            $order->phone=$phone;
+
+            $order->user_id = $userid;
+
+            $order->product_id = $carts-> product_id;
+
+            $order->payment_status = "paid";
+
+            $order->save();
+
+        }
+
+        // $cart_remove = cart::where('user_id' , $userid)->get();
+
+        foreach($cart as $remove){
+            $data = cart::find($remove->id);
+            $data->delete();
+        }
+
+        return redirect('/mycart');
+
+    }
+
+    public function shop(){
+        $product = Product::all();
+
+        if(Auth::id()){
+         $user = Auth::user();
+        $user_id = $user->id;
+        $count = cart::where('user_id',$user_id)->count();
+        }else{
+            $count = '';
+        }
+        return view('home.shop',compact('product','count'));
+    }
+
+    public function why(){
+
+        if(Auth::id()){
+         $user = Auth::user();
+        $user_id = $user->id;
+        $count = cart::where('user_id',$user_id)->count();
+        }else{
+            $count = '';
+        }
+        return view('home.why',compact('count'));
+    }
+
+    public function contactus(){
+        if(Auth::id()){
+            $user = Auth::user();
+           $user_id = $user->id;
+           $count = cart::where('user_id',$user_id)->count();
+           }else{
+               $count = '';
+           }
+           return view('home.contactus',compact('count'));
+    }
+
+    public function testimonial(){
+        if(Auth::id()){
+            $user = Auth::user();
+           $user_id = $user->id;
+           $count = cart::where('user_id',$user_id)->count();
+           }else{
+               $count = '';
+           }
+           return view('home.contactus',compact('count'));
+    }
+
 }

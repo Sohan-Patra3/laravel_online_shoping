@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class AdminController extends Controller
@@ -103,8 +104,8 @@ class AdminController extends Controller
         return view('admin.view_product',compact('product'));
     }
 
-    public function update_product($id){
-        $data = Product::find($id);
+    public function update_product($slug){
+        $data = Product::where('slug',$slug)->get()->first();
         $category = Category::all();
         return view('admin.update_product',compact('data','category'));
     }
@@ -157,5 +158,10 @@ class AdminController extends Controller
 
         $pdf = Pdf::loadView('admin.invoice',compact('data'));
         return $pdf->download('invoice.pdf');
+    }
+
+    public function view_client(){
+        $user = User::where('usertype','user')->get();
+        return view('admin.client',compact('user'));
     }
 }

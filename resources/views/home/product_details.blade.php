@@ -29,7 +29,7 @@
                     Latest Products
                 </h2>
             </div>
-            <div class="row">
+            <div class="row" style="display: flex; justify-content:center; aling-items:center;">
 
                 <div class="col-md-10">
                     <div class="box">
@@ -64,6 +64,10 @@
                             <p>{{ $data->description }}</p>
 
                             </h6>
+                        </div>
+
+                        <div class="details-box">
+                            <a href="{{ url('add_cart', $data->id) }}" class="btn btn-primary">Add to Cart</a>
                         </div>
                     </div>
                 </div>

@@ -12,12 +12,12 @@
                                         Online Shop
                                     </h1>
                                     <p>
-                                        Sequi perspiciatis nulla reiciendis, rem, tenetur impedit, eveniet non
-                                        necessitatibus error distinctio mollitia suscipit. Nostrum fugit
-                                        doloribus consequatur distinctio esse, possimus maiores aliquid repellat
-                                        beatae cum, perspiciatis enim, accusantium perferendis.
+                                        we believe that shopping should be an enjoyable and hassle-free experience.
+                                        That’s why we’ve curated a wide range of high-quality products, ensuring there’s
+                                        something for everyone. From the latest in fashion and electronics to home
+                                        essentials and beauty products, we’ve got you covered.
                                     </p>
-                                    <a href="">
+                                    <a href="{{ url('contactus') }}">
                                         Contact Us
                                     </a>
                                 </div>

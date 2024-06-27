@@ -25,7 +25,7 @@
                             </h6>
                         </div>
                         <div style="padding: 15px">
-                            <a href="{{ url('product_details', $products->id) }}" class="btn btn-danger">Details</a>
+                            <a href="{{ url('product_details', $products->slug) }}" class="btn btn-danger">Details</a>
                             <a href="{{ url('add_cart', $products->id) }}" class="btn btn-primary">Add to Cart</a>
                         </div>
                     </div>

@@ -39,7 +39,7 @@
     <!-- Sidebar Navigation end-->
     <div class="page-content">
         <div class="page-header">
-            <h1 style="color: white">Orders</h1>
+            <h1 style="color: white">All Orders</h1>
             <div class="container-fluid">
 
                 <div class="table_center">
@@ -51,6 +51,7 @@
                             <th>Product Title</th>
                             <th>Price</th>
                             <th>Image</th>
+                            <th>Payment Status</th>
                             <th>Status</th>
                             <th>Change Status</th>
                             <th>Print PDF</th>
@@ -63,6 +64,7 @@
                                 <td>{{ $order->product->title }}</td>
                                 <td>{{ $order->product->price }}</td>
                                 <td><img src="/products/{{ $order->product->image }}" alt="" width="50"></td>
+                                <td>{{ $order->payment_status}}</td>
                                 <td>
                                     @if ($order->status == 'in progress')
                                         <span style="color:red">{{ $order->status }}</span>
